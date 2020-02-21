@@ -14,5 +14,5 @@
     <string name="signin_qns">Forgot your login details? Get help signing in.</string>
     <string name="log_in">Log In</string>
     <string name="app_icon_desc">App icon</string>
-    <string name="visibility_on">Visibility on</string>
+    <string name="visibility_on_off">Visibility on or off</string>
 </resources>
