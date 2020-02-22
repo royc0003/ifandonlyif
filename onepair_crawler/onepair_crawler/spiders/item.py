@@ -27,7 +27,13 @@ class DealItem(scrapy.Item):
         input_processor = MapCompose(remove_tags),
         output_processor = TakeFirst()
     )
-    summary = scrapy.Field(
+
+    terms = scrapy.Field(
+        input_processor = MapCompose(remove_tags),
+        output_processor = TakeFirst()
+    )
+
+    category = scrapy.Field(
         input_processor = MapCompose(remove_tags),
         output_processor = TakeFirst()
     )
