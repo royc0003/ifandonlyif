@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         val currentUser = auth.currentUser
-                        Toast.makeText(baseContext, "${currentUser?.displayName}",
+                        Toast.makeText(baseContext, "Welcome ${currentUser?.email}!",
                             Toast.LENGTH_SHORT).show()
 
                     } else {
