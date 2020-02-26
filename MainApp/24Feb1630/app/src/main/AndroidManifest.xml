@@ -9,29 +9,37 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="HomePage">
+        <activity android:name=".LoginPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MyProfile"
-            android:label="My Profile"/>
-        <activity android:name=".MatchesPage"
-            android:label="Matches"/>
-        <activity android:name=".PreviousMatchesPage"
-            android:label="Previous Matches"/>
-        <activity android:name=".FoodDealsPage"
-            android:label="Food"/>
-        <activity android:name=".EntertainmentDealsPage"
-            android:label="Entertainment"/>
-        <activity android:name=".RetailDealsPage"
-            android:label="Retail"/>
-        <activity android:name=".OthersDealsPage"
-            android:label="Others"/>
+        <activity android:name=".HomePage">
 
-
-
+        </activity>
+        <activity
+            android:name=".MyProfile"
+            android:label="My Profile" />
+        <activity
+            android:name=".MatchesPage"
+            android:label="Matches" />
+        <activity
+            android:name=".PreviousMatchesPage"
+            android:label="Previous Matches" />
+        <activity
+            android:name=".FoodDealsPage"
+            android:label="Food" />
+        <activity
+            android:name=".EntertainmentDealsPage"
+            android:label="Entertainment" />
+        <activity
+            android:name=".RetailDealsPage"
+            android:label="Retail" />
+        <activity
+            android:name=".OthersDealsPage"
+            android:label="Others" />
         <activity android:name=".SelectedDealPage" />
     </application>
 
