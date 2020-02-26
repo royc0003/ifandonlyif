@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menuMatches"
+        android:title="Current Matches" />
+    <item
+        android:id="@+id/menuPreviousMatches"
+        android:title="Previous Matches" />
+    <item
+        android:id="@+id/menuPendingDeals"
+        android:title="Pending Deals"/>
+    <item
+        android:id="@+id/menuMyProfile"
+        android:title="My Profile"/>
+    <item
+        android:id="@+id/menuMessages"
+        android:title="Messages"/>
+    <item
+        android:id="@+id/menuSavedDeals"
+        android:title="Saved Deals"/>
+    <item android:id="@+id/action_search"
+        android:title="Search"
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="always"
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+
+</menu>
