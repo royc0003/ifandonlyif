@@ -10,34 +10,29 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class SignUpPage extends AppCompatActivity {
+public class ForgotPassword extends AppCompatActivity {
     private EditText emailAddress;
-    private EditText password;
-    private EditText username;
     private TextView warning;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up_page);
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.forgot_password);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("1Pair");
+            ActionBar actionBar = getSupportActionBar();
+            actionBar.setTitle("1Pair");
 
-        emailAddress = findViewById(R.id.enteremail);
-        password = findViewById(R.id.enterpassword);
-        username = findViewById(R.id.enterpassword);
-        warning = findViewById(R.id.blank);
+            emailAddress = findViewById(R.id.enteremail);
+            warning = findViewById(R.id.blank);
     }
 
-    public void createAccount(View v){
-        emailAddress.getText();
-        password.getText();
-        username.getText();
 
-        if(TextUtils.isEmpty(emailAddress.toString()) || TextUtils.isEmpty(password.toString()))
+    public void resetPassword(View v){
+        emailAddress.getText();
+
+        if(TextUtils.isEmpty(emailAddress.toString()))
         {
-            warning.setText("Please fill in all fields.");
+            warning.setText("Please fill in your email");
         }
         else
         {
@@ -49,4 +44,5 @@ public class SignUpPage extends AppCompatActivity {
             imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         }
     }
+
 }
