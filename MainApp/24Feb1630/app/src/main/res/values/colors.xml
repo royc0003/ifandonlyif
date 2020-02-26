@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary2">#008577</color>
+    <color name="colorPrimaryDark2">#00574B</color>
+    <color name="colorAccent2">#D81B60</color>
+    <color name="colorPrimary">#E1B83A</color>
+    <color name="colorPrimaryDark">#DDA654</color>
+    <color name="backgroundcolor">#fcfcfc</color>
+    <color name="lightgray">#ededed</color>
+    <color name="food">#FA6D76</color>
+    <color name="entertainment">#FFA450</color>
+    <color name="retail">#E7EA71</color>
+    <color name="others">#59F384</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+
+
+</resources>
