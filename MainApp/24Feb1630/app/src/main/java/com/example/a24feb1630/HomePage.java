@@ -9,7 +9,7 @@ import android.view.View;
 
 public class HomePage extends AppCompatActivity implements View.OnClickListener {
 
-    private CardView foodCard, entertainmentCard, retailCard, othersCard;
+    private CardView foodCard, entertainmentCard, retailCard, othersCard, matchesCard, messagesCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,12 +19,17 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         entertainmentCard = (CardView) findViewById(R.id.entertainment);
         retailCard = (CardView) findViewById(R.id.retail);
         othersCard = (CardView) findViewById(R.id.others);
+        matchesCard = (CardView) findViewById(R.id.homepagematches);
+        messagesCard = (CardView) findViewById(R.id.homepagemessages);
+
 
         //add click listener to cards
         foodCard.setOnClickListener(this);
         entertainmentCard.setOnClickListener(this);
         retailCard.setOnClickListener(this);
         othersCard.setOnClickListener(this);
+        matchesCard.setOnClickListener(this);
+        messagesCard.setOnClickListener(this);
 
     }
 
@@ -46,6 +51,14 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
                 startActivity(i);
                 break;
             case R.id.others:
+                i = new Intent(this, OthersDealsPage.class);
+                startActivity(i);
+                break;
+            case R.id.homepagematches:
+                i = new Intent(this, MatchesPage.class);
+                startActivity(i);
+                break;
+            case R.id.homepagemessages:
                 i = new Intent(this, OthersDealsPage.class);
                 startActivity(i);
                 break;

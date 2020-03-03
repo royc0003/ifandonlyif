@@ -63,7 +63,7 @@ public class SelectedDealPage extends AppCompatActivity {
         //data source
         final CharSequence[] locations = {"Sengkang", "Hougang", "Woodlands", "Yishun", "Tampines", "Khatib", "Punggol", "Yew Tee", "Aljunied", "Bishan", "Toa Payoh", "Orchard"};
         final ArrayList selectedLocations = new ArrayList();
-        //set properties using method chanining
+        //set properties using method chaining
         myBuilder.setTitle("Choose location(s)").setMultiChoiceItems(locations, null, new DialogInterface.OnMultiChoiceClickListener() {
 
             //selected locations are placed into an selectedLocations array list
@@ -83,6 +83,9 @@ public class SelectedDealPage extends AppCompatActivity {
         /** for (Object x : selectedLocations) {
             System.out.println("checked");
         } **/
+
+        //iterate through database with other users who selected same deal, if selected deal same and
+        // any one location same, match them together and show pop up immediately, put on waitlist somewhere
 
         myBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
