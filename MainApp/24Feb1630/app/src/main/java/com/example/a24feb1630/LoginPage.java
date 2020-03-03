@@ -75,6 +75,12 @@ public class LoginPage extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         //updateUI(currentUser);
     }
+
+    public void sign_up(View v)
+    {
+        startActivity(new Intent(this, SignUpPage.class));
+    }
+
     public void openMainPage(){
         Intent intent = new Intent(this, HomePage.class);
         startActivity(intent);
