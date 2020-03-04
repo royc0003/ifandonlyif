@@ -3,6 +3,7 @@ package com.example.a24feb1630;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +13,19 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class ListViewAdapter extends BaseAdapter {
+public class ListViewAdapter extends BaseAdapter implements Serializable {
 
     //variables
     Context mContext;
     LayoutInflater inflater;
     List<Model> modellist;
     ArrayList<Model> arrayList;
+
 
     //constructor
     public ListViewAdapter(Context context, List<Model> modellist)
@@ -77,15 +80,36 @@ public class ListViewAdapter extends BaseAdapter {
         //set the result in imageview
         Picasso.get().load(Uri.parse(modellist.get(position).getIcon())).into(holder.mIconIv);
 
+
         //listview item clicks, all deals from webscraping put here
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //code later
+                //receive the objects from OtherDealsPage.Java
+                Bundle bundle = new Bundle();
+                ArrayList<Model> receivedList = new ArrayList<Model>();
+                for(String key: bundle.keySet()){
+                    receivedList.add((Model)bundle.getSerializable(("KEY")));
+                }
+                for(Model x: receivedList){
+                    if(modellist.get(position).getTitle().equals(x.getTitle())){
+                        System.out.println(x.getTitle()+" clicked"); //for debugging
+                        //start newActivity with title for actionbar and text for textview
+                        //how to transfer the object to this page?
+                        Intent intent = new Intent(mContext, SelectedDealPage.class); // to transfer data between activities
+                        intent.putExtra("actionBarTitle", x.getTitle());
+                        intent.putExtra("contentTv", x.getDesc());
+                        mContext.startActivity(intent);
+                    }
+                }
+
+
+                /*
                 if(modellist.get(position).getTitle().equals("Starbucks")){
                     System.out.println("Sb clicked"); //for debugging
                     //start newActivity with title for actionbar and text for textview
-                    Intent intent = new Intent(mContext, SelectedDealPage.class);
+                    //how to transfer the object to this page?
+                    Intent intent = new Intent(mContext, SelectedDealPage.class); // to transfer data between activities
                     intent.putExtra("actionBarTitle", "Starbucks");
                     intent.putExtra("contentTv", "Starb details");
                     mContext.startActivity(intent);
@@ -153,7 +177,7 @@ public class ListViewAdapter extends BaseAdapter {
                     intent.putExtra("actionBarTitle", "USS");
                     intent.putExtra("contentTv", "USS details");
                     mContext.startActivity(intent);
-                }
+                } */
 
 
             }

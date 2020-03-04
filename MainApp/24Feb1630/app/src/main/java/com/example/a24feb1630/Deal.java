@@ -1,6 +1,8 @@
 package com.example.a24feb1630;
 
-public class Deal {
+import java.io.Serializable;
+
+public class Deal implements Serializable {
     private int id;
     private String name;
     private String start;

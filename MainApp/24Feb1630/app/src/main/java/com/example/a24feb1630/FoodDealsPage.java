@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import androidx.appcompat.widget.SearchView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -20,7 +21,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class FoodDealsPage extends AppCompatActivity {
+public class FoodDealsPage extends AppCompatActivity implements Serializable {
 
     ListView listView;
     ListViewAdapter adapter;
@@ -46,14 +47,14 @@ public class FoodDealsPage extends AppCompatActivity {
                 .build();
         BackEndController backEndController = retrofit.create(BackEndController.class);
         Call<ArrayList<Deal>> call = backEndController.getFoodDeals();
-        call.enqueue(new Callback<ArrayList<Deal>>() {
+        call.enqueue(new Callback<ArrayList<Deal>>() { //note that callback allows for async
             @Override
             public void onResponse(Call<ArrayList<Deal>> call, Response<ArrayList<Deal>> response) {
-                if(!response.isSuccessful()){
+                if(!response.isSuccessful()){ //Note that this for error handling
                     System.out.println("Oops something went wrong!");
                     return;
                 }
-                ArrayList<Deal> deals = response.body();
+                ArrayList<Deal> deals = response.body(); // stores into ArrayList<Deal> objects
                 for(Deal deal: deals){
                     //deal.printDeal();
                     Model model = new Model(deal.getName(), "", deal.getImage());
@@ -61,7 +62,7 @@ public class FoodDealsPage extends AppCompatActivity {
                 }
                 adapter = new ListViewAdapter(getApplicationContext(), arrayList);
                 listView.setAdapter(adapter);
-            }
+        }
 
             @Override
             public void onFailure(Call<ArrayList<Deal>> call, Throwable t) {
@@ -146,6 +147,10 @@ public class FoodDealsPage extends AppCompatActivity {
         //return super.onOptionsItemSelected(item);
         return false;
     }
+    public ArrayList<Model> getArrayList(){ // to get the arrayList of Models
+        return this.arrayList;
+    }
+
 }
 
 /*design row of listview

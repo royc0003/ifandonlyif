@@ -8,7 +8,7 @@ public interface BackEndController {
     @GET("getAllDeals")
     Call<ArrayList<Deal>> getAllDeals();
 
-    @GET("getFoodDeals")
+    @GET("getFoodDeals") //Note this is to specify the http to retrieve from django or get req
     Call<ArrayList<Deal>> getFoodDeals();
 
     @GET("getEntertainmentDeals")

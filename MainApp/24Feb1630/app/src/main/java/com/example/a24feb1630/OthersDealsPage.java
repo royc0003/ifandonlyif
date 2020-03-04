@@ -60,6 +60,10 @@ public class OthersDealsPage extends AppCompatActivity {
                     Model model = new Model(deal.getName(), "", deal.getImage());
                     arrayList.add(model);
                 }
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("KEY", arrayList);// put object
+                Intent intent = new Intent(getApplicationContext(), ListViewAdapter.class);
+                intent.putExtras(bundle); // serialize and transfer data over
                 adapter = new ListViewAdapter(getApplicationContext(), arrayList);
                 listView.setAdapter(adapter);
             }
