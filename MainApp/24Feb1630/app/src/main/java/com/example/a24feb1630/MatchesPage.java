@@ -42,7 +42,7 @@ public class MatchesPage extends AppCompatActivity {
         icon = new int[]{R.drawable.shahrin, R.drawable.royce};
 
         listView = findViewById(R.id.listView);
-
+        /*
         for(int i = 0; i<title.length; i++){
             Model model = new Model(title[i], description[i], icon[i]);
             //bind all strings in an array
@@ -53,7 +53,7 @@ public class MatchesPage extends AppCompatActivity {
         adapter = new ListViewAdapter(this, arrayList);
 
         //bind the adapter to the listview
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter);*/
     }
 
     @Override
