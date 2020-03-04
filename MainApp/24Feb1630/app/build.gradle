@@ -39,5 +39,11 @@ dependencies {
     // Add these new versions in!
     // Note that the naming does not specify api version anymore sdsdsd
     // eg v7.28.0
+    // REST API CALL
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    // Render image via url
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
 
 }

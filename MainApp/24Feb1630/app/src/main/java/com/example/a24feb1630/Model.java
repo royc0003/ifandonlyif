@@ -4,10 +4,10 @@ public class Model
 {
     String title;
     String desc;
-    int icon;
+    String icon;
 
     //constructor
-    public Model(String title, String desc, int icon) {
+    public Model(String title, String desc, String icon) {
         this.title = title;
         this.desc = desc;
         this.icon = icon;
@@ -24,7 +24,7 @@ public class Model
         return this.title;
     }
 
-    public int getIcon() {
+    public String getIcon() {
         return this.icon;
     }
 }

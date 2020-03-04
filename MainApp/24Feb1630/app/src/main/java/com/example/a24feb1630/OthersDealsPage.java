@@ -14,6 +14,12 @@ import androidx.appcompat.widget.SearchView;
 
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class OthersDealsPage extends AppCompatActivity {
 
     ListView listView;
@@ -33,27 +39,36 @@ public class OthersDealsPage extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("1Pair");
 
-
-        //title of deals from webscraping is put here
-        title = new String[]{"Starbucksss", "Long John Ssilvers", "Macdosnalds", "GonsgCha", "Lsiho", "CofsfeeBean", "Jacsk's Place"};
-        //description taken from webscraping is put here
-        description = new String[]{"1-For-1 All Drinks\n Ntu only", "1-For-1 All Meals\n All Outlets", "1-For-1 MacSpicy\n Selected Outlets", "1-For-1 Green Tea\n Northpoint Only", "1-For-1 Milk Tea\n All Outlets", "1-For-1 All Drinks\n Selected Outlets", "1-For-1 Steak set meal\n Selected outlets"};
-        //images taken from webscraping is put here, have to save images to drawables first though
-        icon = new int[]{R.drawable.starbucks, R.drawable.longjohn, R.drawable.mac, R.drawable.gongcha, R.drawable.liho, R.drawable.coffeebean, R.drawable.jacksplace};
-
         listView = findViewById(R.id.listView);
 
-        for(int i = 0; i<title.length; i++){
-            Model model = new Model(title[i], description[i], icon[i]);
-            //bind all strings in an array
-            arrayList.add(model);
-        }
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://128.199.167.80:8080/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        BackEndController backEndController = retrofit.create(BackEndController.class);
+        Call<ArrayList<Deal>> call = backEndController.getOthersDeals();
+        call.enqueue(new Callback<ArrayList<Deal>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Deal>> call, Response<ArrayList<Deal>> response) {
+                if(!response.isSuccessful()){
+                    System.out.println("Oops something went wrong!");
+                    return;
+                }
+                ArrayList<Deal> deals = response.body();
+                for(Deal deal: deals){
+                    //deal.printDeal();
+                    Model model = new Model(deal.getName(), "", deal.getImage());
+                    arrayList.add(model);
+                }
+                adapter = new ListViewAdapter(getApplicationContext(), arrayList);
+                listView.setAdapter(adapter);
+            }
 
-        //pass results to listViewAdapter class
-        adapter = new ListViewAdapter(this, arrayList);
-
-        //bind the adapter to the listview
-        listView.setAdapter(adapter);
+            @Override
+            public void onFailure(Call<ArrayList<Deal>> call, Throwable t) {
+                System.out.println("Oops something went wrong!");
+            }
+        });
     }
 
     @Override
